@@ -49,20 +49,19 @@ while game_running:
             game_running = False
         # Detect when the delete key is pressed, clear
         # the screen and set previous_point to None
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_DELETE:
-                game_window.fill((255,255,255))
-                previous_point = None
-                
+        if event.type == pygame.KEYUP and event.key == pygame.K_DELETE:
+            game_window.fill((255,255,255))
+            previous_point = None
+
         # On left mouse button clicked, draw a line from previous_point to
         # click position if previous_point not equal to `None`. Update
         # previous_point with the click that was just made
         if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
             process_click(event)
-            
+
     # Update our display
     pygame.display.update()
-    
+
 
 # Uninitialize all pygame modules and quit the program
 pygame.quit()

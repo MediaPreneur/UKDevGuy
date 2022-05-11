@@ -8,14 +8,15 @@ while True:
     print("Hello")
 """
 
+
 # Example while loop
 list_of_numbers = []
 
 while len(list_of_numbers) < 5:
     user_input = input("Add a number: ")
     list_of_numbers.append(user_input)
-   
-   
+
+
 """
 For loops have the following syntax:
 for <var> in <sequence>:
@@ -32,8 +33,8 @@ for elem in my_list:
 # Example of iterating over even numbers
 for num in range(0, 11, 2):
     print(num)
-    
-    
+
+
 """
 Examples of using break
 """
@@ -45,8 +46,8 @@ while True:
 print("Few, it's ok!")
 
 # Example using nexted loops
-for outer in range(0, 10):
-    for inner in range(0, 5):
+for _ in range(10):
+    for _ in range(5):
         print("Inner")
         break
     print("Outer")
@@ -60,9 +61,6 @@ while num < 5:
     print("My number is:", num)
     num += 1
     continue
-    print("I don't want this line to run...")
-    
-    
 # Be careful... This could look unclear!
 num = 1
 while num < 5:

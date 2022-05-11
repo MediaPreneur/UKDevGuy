@@ -18,7 +18,7 @@ plt.scatter(centroids[:,0], centroids[:,1], marker="x", color="red")
 plt.show()
 
 # Repeat asssigning and recalculation of centroids
-for i in range(0, iterations):
+for i in range(iterations):
     # Calculate distances
     dists = euclidean_distances(data, centroids)
 
@@ -28,7 +28,7 @@ for i in range(0, iterations):
 
     # Recalculate the centroids
     new_centroids = np.zeros(shape=[k,data.shape[1]])
-    for centroid in range(0, centroids.shape[0]):
+    for centroid in range(centroids.shape[0]):
         # Get all datapoints alocated to cluster
         cluster_data = data[predicted_label == centroid]
         # Calculate the mean of this cluster
@@ -36,12 +36,12 @@ for i in range(0, iterations):
             new_centroids[centroid, :] = np.mean(cluster_data, axis=0)
         else:
             new_centroids[centroid, :] = centroids[centroid, :]
-        
+
     # Assign the new cluster centers
     centroids = new_centroids
 
     # For each cluster, draw lines to their data points
-    for i in range(0, 120):
+    for i in range(120):
         if predicted_label[i] == 0:
             plt.plot([data[i][0], new_centroids[0][0]], [data[i][1], new_centroids[0][1]], linewidth=0.5, color="#44015433")
         elif predicted_label[i] == 1:

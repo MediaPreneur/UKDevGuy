@@ -27,5 +27,5 @@ for product in product_list:
     print(f"We have {product.quantity} {product.name} priced at £{product.price:.2f} each.")
 
 # Calculate total stock price
-total_price = sum([product.get_total() for product in product_list])
+total_price = sum(product.get_total() for product in product_list)
 print(f"The total price of all stock is £{total_price:.2f}")

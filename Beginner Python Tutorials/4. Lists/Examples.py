@@ -21,8 +21,7 @@ insertion_list.insert(3, "Element 3")
 print(insertion_list)
 
 # Example of appeneding element to the end of a list
-append_list = ["Element 1", "Element 2", "Element 3", "Element 4"]
-append_list.append("Element 5")
+append_list = ["Element 1", "Element 2", "Element 3", "Element 4", "Element 5"]
 print(append_list)
 
 # Example of using the del keyword

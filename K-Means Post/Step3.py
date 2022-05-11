@@ -18,7 +18,7 @@ dists = euclidean_distances(data, centroids)
 predicted_label = np.argmin(dists, axis=1)
 
 # For each cluster, draw lines to their data points
-for i in range(0, 120):
+for i in range(120):
     if predicted_label[i] == 0:
         plt.plot([data[i][0], centroids[0][0]], [data[i][1], centroids[0][1]], linewidth=0.5, color="#44015433")
     elif predicted_label[i] == 1:

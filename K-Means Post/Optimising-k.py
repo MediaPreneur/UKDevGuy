@@ -23,32 +23,31 @@ for k in range(1, 11):
     centroids, c_labels = make_blobs(n_samples=k, centers=k, random_state=42)
 
     # Repeat asssigning and recalculation of centroids
-    for i in range(0, iterations):
+    for _ in range(iterations):
         # Calculate distances
         dists = euclidean_distances(data, centroids)
-        
+
         # Get the index of the closest cluster for each
         # data point
         predicted_label = np.argmin(dists, axis=1)
 
         # Recalculate the centroids
         new_centroids = np.zeros(shape=[k,data.shape[1]])
-        for centroid in range(0, centroids.shape[0]):
+        for centroid in range(centroids.shape[0]):
             # Get all datapoints alocated to cluster 
             cluster_data = data[predicted_label == centroid]
             # Calculate the mean of this cluster
-            if len(cluster_data) > 0:
-                new_centroids[centroid, :] = np.mean(cluster_data, axis=0)
-            else:
-                new_centroids[centroid, :] = centroids[centroid, :]
-            
+            new_centroids[centroid, :] = (
+                np.mean(cluster_data, axis=0)
+                if len(cluster_data) > 0
+                else centroids[centroid, :]
+            )
+
         # Assign the new cluster centers
         centroids = new_centroids
 
     # Calculate SSD
-    ssd = 0
-    for i in range(0, 120):
-        ssd += dists[i][predicted_label[i]]**2
+    ssd = sum(dists[i][predicted_label[i]]**2 for i in range(120))
     # Append SSD to y axis data
     ssd_list.append(ssd)
 
